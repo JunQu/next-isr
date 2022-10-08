@@ -28,11 +28,11 @@ export async function getStaticProps() {
 }
 
 function getIssues(token: string) {
-  return fetchGitHub('/repos/leerob/on-demand-isr/issues', token);
+  return fetchGitHub('/repos/JunQu/next-isr/issues', token);
 }
 
 function getRepoDetails(token: string) {
-  return fetchGitHub('/repos/leerob/on-demand-isr', token);
+  return fetchGitHub('/repos/JunQu/next-isr', token);
 }
 
 export default function Home({ issues, stargazers_count, forks_count }: any) {

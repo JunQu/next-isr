@@ -27,7 +27,7 @@ function getGitHubJWT() {
 
 async function getInstallation(token: string) {
   const installations = await fetchGitHub('/app/installations', token);
-  return installations.find((i: any) => i.account.login === 'leerob');
+  return installations.find((i: any) => i.account.login === 'JunQu');
 }
 
 function createGitHubRequest(path: string, token: string, opts: any = {}) {

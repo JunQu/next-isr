@@ -46,18 +46,18 @@ export async function getStaticProps({ params }) {
 }
 
 function getIssue(token: string, issue: string) {
-  return fetchGitHub(`/repos/leerob/on-demand-isr/issues/${issue}`, token);
+  return fetchGitHub(`/repos/JunQu/next-isr/issues/${issue}`, token);
 }
 
 function getIssueComments(token: string, issue: string) {
   return fetchGitHub(
-    `/repos/leerob/on-demand-isr/issues/${issue}/comments`,
+      `/repos/JunQu/next-isr/issues/${issue}/comments`,
     token
   );
 }
 
 function getRepoDetails(token: string) {
-  return fetchGitHub('/repos/leerob/on-demand-isr', token);
+  return fetchGitHub('/repos/JunQu/next-isr', token);
 }
 
 function markdownToHtml(markdown) {
