@@ -21,6 +21,10 @@ const getGitHubJWT = async () => {
     iat: Math.floor(Date.now() / 1000) - 60,
     exp: Math.floor(Date.now() / 1000) + 60 * 2, // 2 minutes is the max
   };
+    console.log('------test error-----')
+    console.log(PEM)
+    console.log(AppID)
+    console.log('-----end-------')
 
   return sign(config, PEM, { algorithm });
 };
