@@ -26,7 +26,7 @@ const getGitHubJWT = async () => {
     console.log(AppID)
     console.log('-----end-------')
 
-  return sign(config, PEM, { algorithm });
+  return sign(config, PEM.replace(/\\n/gm, "\n"), { algorithm });
 };
 
 const getInstallation = async (token: string) => {
