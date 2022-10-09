@@ -1,8 +1,8 @@
-import styles from '../styles/Home.module.scss';
-import { StarIcon, ForkIcon, GitHubIcon, LinkIcon } from '../components/icons';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import Head from 'next/head';
+import styles from "../styles/Home.module.scss";
+import { StarIcon, ForkIcon, GitHubIcon, LinkIcon } from "./icons";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Head from "next/head";
 
 export default function Layout({
   children,
@@ -48,14 +48,14 @@ export default function Layout({
             ` repo change (get created, commented on, deleted, etc), GitHub
             fires off a webhook and the impacted pages get re-rendered and
             pushed to the edge, on demand. The webhook on the Next.js app side
-            executes a new{' '}
+            executes a new{" "}
             <a
               href="https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#using-on-demand-revalidation"
               target="_blank"
               rel="noreferrer noopener"
             >
               <code>`res.revalidate()`</code>
-            </a>{' '}
+            </a>{" "}
             API call.
           </p>
         </details>
@@ -66,7 +66,7 @@ export default function Layout({
           </summary>
 
           <p>
-            Unlike <code>`revalidate`</code>{' '}
+            Unlike <code>`revalidate`</code>{" "}
             <a
               href="https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration"
               target="_blank"
@@ -74,7 +74,7 @@ export default function Layout({
             >
               with a time interval
             </a>
-            , a Serverless Function is invoked{' '}
+            , a Serverless Function is invoked{" "}
             <em>_only when content changes_</em>, making it faster for the user
             (they see changes immediately), and more cost-efficient for owners.
           </p>
@@ -82,16 +82,16 @@ export default function Layout({
 
         <p>
           <em>
-            _💡 Try{' '}
+            _💡 Try{" "}
             <a
               href="https://github.com/leerob/on-demand-isr/issues/new"
               target="_blank"
               rel="noreferrer"
             >
               creating a new issue
-            </a>{' '}
+            </a>{" "}
             or commenting, and refresh this page to see the regenerated one!_
-          </em>{' '}
+          </em>{" "}
           <br />
           <span className={styles.explanation_notes}>
             Pages take about <b>*300ms~*</b> to fully propagate to the global
@@ -102,24 +102,24 @@ export default function Layout({
 
       <div className={styles.repo}>
         <div className={styles.repo_title}>
-          <GitHubIcon />{' '}
+          <GitHubIcon />{" "}
           <a
-            href="https://github.com/leerob/on-demand-isr"
+            href="https://github.com/JunQu/next-isr"
             target="_blank"
             rel="noreferrer"
           >
-            leerob
-          </a>{' '}
-          /{' '}
+            JunQu
+          </a>{" "}
+          /{" "}
           <Link href="/">
-            <a>on-demand-isr</a>
+            <a>next-isr</a>
           </Link>
           {router.query.id && (
             <>
-              {' '}
-              /{' '}
+              {" "}
+              /{" "}
               <a
-                href={`https://github.com/leerob/on-demand-isr/issues/${router.query.id}`}
+                href={`https://github.com/JunQu/next-isr/issues/${router.query.id}`}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -135,14 +135,14 @@ export default function Layout({
               target="_blank"
               rel="noreferrer"
             >
-              <ForkIcon /> {new Number(forks_count).toLocaleString()}
+              <ForkIcon /> {Number(forks_count).toLocaleString()}
             </a>
             <a
               href="https://github.com/leerob/on-demand-isr"
               target="_blank"
               rel="noreferrer"
             >
-              <StarIcon /> {new Number(stargazers_count).toLocaleString()}
+              <StarIcon /> {Number(stargazers_count).toLocaleString()}
             </a>
           </div>
         ) : (
@@ -152,7 +152,7 @@ export default function Layout({
               target="_blank"
               rel="noreferrer"
             >
-              <LinkIcon /> {'Open in GitHub'}
+              <LinkIcon /> {"Open in GitHub"}
             </a>
           </div>
         )}
