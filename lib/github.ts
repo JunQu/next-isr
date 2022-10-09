@@ -3,7 +3,7 @@ import { sign } from "jsonwebtoken";
 let accessToken;
 
 const AppID = process.env.GITHUB_APP_ID;
-const PEM = process.env.GITHUB_APP_PK_PEM;
+const PEM =Buffer.from(process.env.GITHUB_APP_PK_PEM, 'base64').toString();
 
 const getAccessToken = async (installationId: number, token: string) => {
   const path = `/app/installations/${installationId}/access_tokens`;
@@ -21,10 +21,6 @@ const getGitHubJWT = async () => {
     iat: Math.floor(Date.now() / 1000) - 60,
     exp: Math.floor(Date.now() / 1000) + 60 * 2, // 2 minutes is the max
   };
-    console.log('------test error-----')
-    console.log(PEM)
-    console.log(AppID)
-    console.log('-----end-------')
 
   return sign(config, PEM.replace(/\\n/gm, "\n"), { algorithm });
 };
