@@ -17,17 +17,18 @@ function compareSignatures(signature, rawBody) {
  async function handleWebhook(req, res) {
   // verify the webhook signature request against the
   // unmodified, unparsed body
-  if (!req.body) {
+   const body = await getRawBody(req);
+  if (!body) {
     res.status(400).send("Bad request (no body)");
     return;
   }
 
   // compute our signature from the raw body
   const signature = req.headers["x-hub-signature-256"];
-  const rawBody = JSON.stringify(req.body);
+   const jsonBody = JSON.parse(body);
 
-  if (compareSignatures(signature, rawBody)) {
-    const issueNumber = req.body.issue?.number;
+  if (compareSignatures(signature, body)) {
+    const issueNumber =jsonBody.issue?.number;
 
     // issue opened or edited
     // comment created or edited
@@ -42,4 +43,15 @@ function compareSignatures(signature, rawBody) {
   } else {
     return res.status(403).send("Forbidden");
   }
+}
+
+function getRawBody(req) {
+  return new Promise((resolve) => {
+    let bodyChunks = [];
+    req.on('end', () => {
+      const rawBody = Buffer.concat(bodyChunks).toString('utf8');
+      resolve(rawBody);
+    });
+    req.on('data', (chunk) => bodyChunks.push(chunk));
+  });
 }
