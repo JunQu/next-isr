@@ -55,9 +55,3 @@ function getRawBody(req) {
     req.on('data', (chunk) => bodyChunks.push(chunk));
   });
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
